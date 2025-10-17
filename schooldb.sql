@@ -582,7 +582,15 @@ UPDATE teachers
 SET salary = salary + 5000
 WHERE teacher_id = 2;
 COMMIT;
-
+--rollback example
+START TRANSACTION;
+UPDATE teachers
+SET salary = salary - 3000
+WHERE teacher_id = 3;
+UPDATE teachers
+SET salary = salary + 3000
+WHERE teacher_id = 4;
+ROLLBACK;
 
 
 
