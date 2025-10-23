@@ -591,6 +591,61 @@ UPDATE teachers
 SET salary = salary + 3000
 WHERE teacher_id = 4;
 ROLLBACK;
+--To create an index on students table
+CREATE INDEX idx_last_name
+ON students (last_name);
+--To drop the index
+DROP INDEX idx_last_name
+ON students;
+--To create an index on teachers table
+CREATE INDEX idx_first_name
+ON teachers (first_name);
+--To drop the index
+DROP INDEX idx_first_name
+ON teachers;
+
+
+--To create a view on students table
+CREATE VIEW vw_students AS
+SELECT first_name,last_name,course_id,enrollment_date
+FROM students
+WHERE course_id IS NOT NULL;
+--To query the view
+SELECT * FROM vw_students
+WHERE course_id = 1;
+--To drop the view
+DROP VIEW vw_students;
+--To create a view on teachers table
+CREATE VIEW vw_teachers AS
+SELECT first_name,last_name,hire_date,salary
+FROM teachers;
+--To query the view
+SELECT * FROM vw_teachers
+WHERE salary > 60000;
+--To drop the view
+DROP VIEW vw_teachers;
+-- To create aview based on a join between students and courses
+CREATE VIEW vw_student_courses AS
+SELECT S.first_name,S.last_name,C.course_name
+FROM students AS S
+INNER JOIN courses AS C 
+ON S.course_id = C.course_id;
+--To query the view
+SELECT * FROM vw_student_courses
+WHERE course_name = 'Data Science';
+--To drop the view
+DROP VIEW vw_student_courses;
+-- To create a view based on a join between teachers and departments
+CREATE VIEW vw_teacher_departments AS
+SELECT T.first_name,T.last_name,D.department_name
+FROM teachers AS T
+INNER JOIN departments AS D
+ON T.teacher_id = D.teachers_id;
+--To query the view
+SELECT * FROM vw_teacher_departments
+WHERE department_name = 'Sciences';
+--To drop the view
+DROP VIEW vw_teacher_departments;
 
 
 
