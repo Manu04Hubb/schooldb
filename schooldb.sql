@@ -649,6 +649,7 @@ DROP VIEW vw_teacher_departments;
 
 --Advanced SQL Functions
 --1)String Functions
+
 --i)CONCAT -> an SQL function used to combine two or more strings into a single string
 SELECT CONCAT(first_name,' ' ,last_name) AS full_name 
 FROM students;
@@ -673,6 +674,32 @@ FROM students;
 --vi)LOWER() function in SQL converts all characters in a specified string to lowercase
 SELECT UPPER(first_name) AS cap_firstnames,LOWER(last_name) AS lowercased_lastnames
 FROM students;
+
+--2)Numeric Functions
+--i)FLOOR function is used to round down any specific decimal or 
+--numeric value to its nearest whole integer.
+SELECT first_name,last_name,
+FLOOR(salary) AS wholenumber_salary
+FROM teachers
+WHERE first_name = 'Bruno';
+
+--ii) ABS() function in SQL returns the absolute value of a given numeric expression, 
+--meaning it converts any negative number to its positive equivalent 
+--while leaving positive numbers unchanged. 
+SELECT first_name,hire_date, ABS(salary) AS absolute_salary
+FROM teachers 
+
+--iii)The MOD function in SQL calculates the remainder when one number is divided by another.
+SELECT first_name,hire_date, MOD(salary , 2000) AS reminder_dividedby200
+FROM teachers;
+
+--iv)ROUND function in SQL is used to round a numeric value to a specified number of decimal places.
+SELECT first_name,hire_date, ROUND((salary / 3), 3) AS salary_roundedto3
+FROM teachers; 
+
+--v) CEILING() function in SQL returns the smallest integer greater than or equal to a given numeric value
+SELECT first_name,hire_date, CEIL(ROUND((salary / 3), 3)) AS salary_roundedto3_roundedup
+FROM teachers;
 
 
 
