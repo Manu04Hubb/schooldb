@@ -647,5 +647,32 @@ WHERE department_name = 'Sciences';
 --To drop the view
 DROP VIEW vw_teacher_departments;
 
+--Advanced SQL Functions
+--1)String Functions
+--i)CONCAT -> an SQL function used to combine two or more strings into a single string
+SELECT CONCAT(first_name,' ' ,last_name) AS full_name 
+FROM students;
+
+--ii)LENGTH -> function in SQL returns the number of characters in a string.
+SELECT first_name,last_name,birth_date,
+LENGTH(first_name) AS firstnames_length
+FROM students
+ORDER BY firstnames_length;
+
+--iii)SUBSTRING -> a SQL function used to extract a portion of a string
+SELECT SUBSTRING(first_name,1,5) AS Section_of_firstnames
+FROM students;
+
+--iv)REPLACE -> function in SQL is used to substitute all occurrences of
+-- a specified substring within a string with a new substring
+SELECT first_name,last_name,
+REPLACE(enrollment_date,'2025','2026') AS updated_enrollment
+FROM students;
+
+--v)UPPER() is a string function in SQL used to convert all characters in a specified string to uppercase.
+--vi)LOWER() function in SQL converts all characters in a specified string to lowercase
+SELECT UPPER(first_name) AS cap_firstnames,LOWER(last_name) AS lowercased_lastnames
+FROM students;
+
 
 
