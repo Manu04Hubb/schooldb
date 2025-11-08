@@ -701,5 +701,7 @@ FROM teachers;
 SELECT first_name,hire_date, CEIL(ROUND((salary / 3), 3)) AS salary_roundedto3_roundedup
 FROM teachers;
 
+--3) Date Functions
+--i) NOW() function in SQL returns the current date and time of the database server.
 
 
